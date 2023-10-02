@@ -4,7 +4,7 @@ import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
 
 const MovieList = (props)=> {
-    const movies = [props.movie];
+    const movies = props.movie;
     // console.log(props.movie)
     // console.log(movies)
     return (
@@ -23,7 +23,7 @@ const MovieList = (props)=> {
 
                 <tbody>
                     {
-                        movies[0].map(movie=><MovieListItem key={movie.id} movie={movie}/>)
+                        movies.map(movie=><MovieListItem key={movie.id} movie={movie}/>)
                     }
                 </tbody>
             </table>
