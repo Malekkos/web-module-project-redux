@@ -21,7 +21,9 @@ const Movie = (props) => {
         push("/movies")
     }
 
-    const handleFavoriteClick = () => {
+    const handleFavoriteClick = (event) => {
+        console.log(event.target)
+        event.target.style.visibility = "hidden"
         addFavorite(movie)
     }
 
@@ -54,7 +56,7 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            {displayFavorites && <span onClick={handleFavoriteClick}className="m-2 btn btn-dark">Favorite</span>}
+                            {displayFavorites && <span onClick={event => handleFavoriteClick(event)}className="m-2 btn btn-dark">Favorite</span>}
                             <span className="delete" onClick={handleClick}><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
                     </div>
@@ -65,7 +67,6 @@ const Movie = (props) => {
 }
 
 const mapStateToProps = state => {
-    // console.log(state.movies)
     return {
         displayFavorites: state.favoriteReducer.displayFavorites,
         movies: state.movieReducer.movies
